@@ -78,8 +78,8 @@ var kittenGenerator = {
 
 // Run our kitten generation script as soon as the document's DOM is ready.
 document.addEventListener('DOMContentLoaded', function () {
-  kittenGenerator.requestKittens();
-  
+//  kittenGenerator.requestKittens();
+  bootStrap();
 });
   loadExpander();
 
@@ -95,4 +95,26 @@ function loadExpander(e) {
       {file: "expander.js"});
   window.close();*/
 }
+focusedWindowId = undefined;
+currentWindowId = undefined;
 
+function bootStrap() {
+	  chrome.windows.getCurrent(function(currentWindow) {
+	    currentWindowId = currentWindow.id;
+	    chrome.windows.getLastFocused(function(focusedWindow) {
+	      focusedWindowId = focusedWindow.id;
+	      loadWindowList();
+	    });
+	  });
+}
+
+
+// popup.js
+ loadWindowList= function() {
+    
+        chrome.extension.sendMessage({  type: "dom-loaded2" });
+        console.log('pop,js window load');
+      //  alert('Tet');
+      //  var bkg = chrome.runtime.getBackgroundPage(function(){});
+      //  bkg.console.log('foo');
+}

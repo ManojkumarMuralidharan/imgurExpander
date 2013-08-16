@@ -1,3 +1,14 @@
+
+chrome.extension.onMessage.addListener(
+  function(request, sender, sendResponse) {
+    console.log(sender.tab ?
+                "from a content script:" + sender.tab.url :
+                "from the extension");
+    if (request.greeting == "hello")
+      sendResponse({farewell: "goodbye"});
+	  
+	  imgurfy();
+});
 function imgurfy(){
  
 	var aTags = document.querySelectorAll('a');
@@ -5,7 +16,7 @@ function imgurfy(){
    // divs[i].addEventListener('click', click);
   // console.log(a.href);
   var href=aTags[i].href;
-  var RegExp  = /.*imgur.com.*.jpg/;
+  var RegExp  = /.*imgur.com.*/;
    if (RegExp.test(href)&&aTags[i].className!='thumbnail '){
 	var parentNodeTag=aTags[i].parentNode;
 	var divImgurHolder = document.createElement('div');
@@ -35,33 +46,3 @@ function hide(divImgurHolder){
 			divImgurHolder.className='imgurPopup hidden';
  };
  };
- 
- chrome.tabs.onActivated.addListener(function(activeInfo) {
-  // how to fetch tab url using activeInfo.tabid
-  chrome.tabs.get(activeInfo.tabId, function(tab){
-		console.log("background");
-        console.log(sender.tab ? "from a content script:" + sender.tab.url : "from the extension");
-		var requestObject = {"backgroundKey": "backgroundValue"};
-        chrome.tabs.sendRequest(activeInfo.tabId, requestObject, 
-            function(value) { // used below
-			console.log(value); 
-		});
-   });
-}); 
-/*
-chrome.extension.onMessage.addListener(function(request, sender) { 
-
-    //chrome.tabs.getSelected(null, function(){
-		  console.log("background");
-          console.log(sender.tab ? "from a content script:" + sender.tab.url : "from the extension");
-		  imgurfy();
-		  sendResponse({farewell: "goodbye"});
-	  
-  //  }); 
- 
-});
-	*/
- 
-	  
-	  
-	  
