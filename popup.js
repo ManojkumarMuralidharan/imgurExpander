@@ -118,3 +118,4 @@ function bootStrap() {
       //  var bkg = chrome.runtime.getBackgroundPage(function(){});
       //  bkg.console.log('foo');
 }
+

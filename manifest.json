@@ -15,14 +15,14 @@
   },
   "content_scripts": [
     {
-      "matches": ["http://*/*"],
+      "matches": ["http://*.reddit.com/*"],
       "css": ["expander.css"],
 	  "js": ["expander.js"],
 	  "run_at" : "document_end"
     }
   ],
   "permissions" : [
-	 "tabs", "http://*/*","https://*/*"
+	 "tabs","http://api.imgur.com/3/*","https://api.imgur.com/3/*"
   ]
   
 }

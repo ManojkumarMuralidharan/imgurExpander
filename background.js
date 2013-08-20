@@ -8,7 +8,7 @@ chrome.tabs.onUpdated.addListener(function(tabId,changeInfo,tab){ //onUpdated sh
 			//response will be the arrayWithAllTheInfoInIt that we sent back
 			//you can do whatever you want with it here
 			//I will just output it in console
-			console.log(response.farewell);
+			console.log('response.farewell');
 		  });
 		});
     });
@@ -72,7 +72,7 @@ chrome.tabs.onSelectionChanged.addListener(
 
 
 
-
+/*
 chrome.runtime.onConnect.addListener(function(port) {
   console.assert(port.name == "knockknock");
   port.onMessage.addListener(function(msg) {
@@ -84,7 +84,7 @@ chrome.runtime.onConnect.addListener(function(port) {
       port.postMessage({question: "I don't get it."});
   });
 });
-
+*/
 
 // listening for an event / one-time requests
 // coming from the popup
